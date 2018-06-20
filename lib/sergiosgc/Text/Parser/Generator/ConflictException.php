@@ -1,15 +1,6 @@
 <?php
-class Text_Parser_Generator_Exception extends Exception
-{
-}
-
-class Text_Parser_Generator_InvalidItemException extends Text_Parser_Generator_Exception
-{
-}
-
-class Text_Parser_Generator_InvalidStateException extends Text_Parser_Generator_Exception
-{
-}
+/* vim: set expandtab tabstop=4 shiftwidth=4 foldmethod=marker: */
+namespace sergiosgc;
 
 class Text_Parser_Generator_ConflictException extends Text_Parser_Generator_Exception
 {
@@ -29,8 +20,6 @@ class Text_Parser_Generator_ConflictException extends Text_Parser_Generator_Exce
     }
     public static function create($leftTransition, $rightTransition)
     {
-        require_once('Text/Parser/Generator/FSA/Transition/Reduce.php');
-        require_once('Text/Parser/Generator/FSA/Transition/Shift.php');
         if (
             !($leftTransition instanceof Text_Parser_Generator_FSA_Transition_Reduce || $leftTransition instanceof Text_Parser_Generator_FSA_Transition_Shift) ||
             !($rightTransition instanceof Text_Parser_Generator_FSA_Transition_Reduce || $rightTransition instanceof Text_Parser_Generator_FSA_Transition_Shift) ||
@@ -50,10 +39,3 @@ class Text_Parser_Generator_ConflictException extends Text_Parser_Generator_Exce
 
     }
 }
-class Text_Parser_Generator_ShiftReduceConflictException extends Text_Parser_Generator_ConflictException
-{
-}
-class Text_Parser_Generator_ReduceReduceConflictException extends Text_Parser_Generator_ConflictException
-{
-}
-?>

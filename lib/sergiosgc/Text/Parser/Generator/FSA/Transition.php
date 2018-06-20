@@ -1,8 +1,6 @@
 <?php
 /* vim: set expandtab tabstop=4 shiftwidth=4 foldmethod=marker: */
-require_once('Text/Parser/Generator/Exception.php');
-require_once('Text/Parser/Generator/Item.php');
-require_once('Text/Parser/Generator/FSA/State.php');
+namespace sergiosgc;
 
 /**
  * Text_Parser_Generator_FSA_Transition represents an arc in a Text_Parser_Generator_FSA state graph

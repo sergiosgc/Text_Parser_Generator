@@ -1,6 +1,7 @@
 <?php
 /* vim: set expandtab tabstop=4 shiftwidth=4 foldmethod=marker: */
-require_once('Text/Parser/Generator/LR.php');
+namespace sergiosgc;
+
 /**
  * A Text_Parser_Generator_LALR is an LALR parser generator. 
  *
@@ -18,7 +19,7 @@ class Text_Parser_Generator_LALR extends Text_Parser_Generator_LR
      */
     public function __construct($grammar)
     {
-        $this->parserClass = 'Text_Parser_LALR';
+        $this->parserClass = '\sergiosgc\Text_Parser_LALR';
         parent::__construct($grammar);
     }
     /* }}} */

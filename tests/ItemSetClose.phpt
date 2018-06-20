@@ -2,14 +2,8 @@
 Closure test for an itemset
 --FILE--
 <?php
-ini_set('include_path', realpath(dirname(__FILE__) . '/../../Structures_Grammar/') . ':' .
-                        realpath(dirname(__FILE__) . '/../') . ':' .
-                        ini_get('include_path'));
-require_once('Structures/Grammar/Symbol.php');
-require_once('Structures/Grammar/Rule.php');
-require_once('Structures/Grammar.php');
-require_once('Text/Parser/Generator/Item.php');
-require_once('Text/Parser/Generator/ItemSet.php');
+namespace sergiosgc;
+require_once(__DIR__ . '/../vendor/autoload.php');
 
 $grammar = new Structures_Grammar(false, false);
 $grammar->addTerminal(Structures_Grammar_Symbol::create('0'));

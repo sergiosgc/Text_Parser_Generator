@@ -2,13 +2,8 @@
 Generate LALR(1) parser for a grammar with a reduce-reduce conflict
 --FILE--
 <?php
-ini_set('include_path', realpath(dirname(__FILE__) . '/../../Structures_Grammar/') . ':' .
-                        realpath(dirname(__FILE__) . '/../') . ':' .
-                        ini_get('include_path'));
-require_once('Structures/Grammar/Symbol.php');
-require_once('Structures/Grammar/Rule.php');
-require_once('Structures/Grammar.php');
-require_once('Text/Parser/Generator/LALR.php');
+namespace sergiosgc;
+require_once(__DIR__ . '/../vendor/autoload.php');
 
 $grammar = new Structures_Grammar(true, false);
 $grammar->addTerminal(Structures_Grammar_Symbol::create('a'));
@@ -50,7 +45,6 @@ print($generator->generate('SampleParser'));
 ?>
 --EXPECT--
 /* vim: set expandtab tabstop=4 shiftwidth=4 foldmethod=marker: */
-require_once('Text/Parser/LALR.php');
 /**
  *
  * This is an automatically generated parser for the following grammar:
@@ -109,7 +103,7 @@ require_once('Text/Parser/LALR.php');
  *    Reduce on  using F->Ac
  *
  */
-class SampleParser extends Text_Parser_LALR
+class SampleParser extends \sergiosgc\Text_Parser_LALR
 {
     /* Constructor {{{ */
     /**
@@ -135,9 +129,8 @@ class SampleParser extends Text_Parser_LALR
      */
     protected function &reduce_rule_3()
     {
-        require_once('Text/Tokenizer/Token.php');
         $result = '';
-        $result =& new Text_Tokenizer_Token('B', $result);
+        $result = new \sergiosgc\Text_Tokenizer_Token('B', $result);
         return $result;
     }
     /* }}} */
@@ -152,9 +145,8 @@ class SampleParser extends Text_Parser_LALR
      */
     protected function &reduce_rule_4()
     {
-        require_once('Text/Tokenizer/Token.php');
         $result = '';
-        $result =& new Text_Tokenizer_Token('A', $result);
+        $result = new \sergiosgc\Text_Tokenizer_Token('A', $result);
         return $result;
     }
     /* }}} */
@@ -169,9 +161,8 @@ class SampleParser extends Text_Parser_LALR
      */
     protected function &reduce_rule_1()
     {
-        require_once('Text/Tokenizer/Token.php');
         $result = '';
-        $result =& new Text_Tokenizer_Token('F', $result);
+        $result = new \sergiosgc\Text_Tokenizer_Token('F', $result);
         return $result;
     }
     /* }}} */
@@ -186,9 +177,8 @@ class SampleParser extends Text_Parser_LALR
      */
     protected function &reduce_rule_2()
     {
-        require_once('Text/Tokenizer/Token.php');
         $result = '';
-        $result =& new Text_Tokenizer_Token('F', $result);
+        $result = new \sergiosgc\Text_Tokenizer_Token('F', $result);
         return $result;
     }
     /* }}} */

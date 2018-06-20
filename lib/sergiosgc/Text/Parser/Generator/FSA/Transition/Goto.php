@@ -1,6 +1,6 @@
 <?php
 /* vim: set expandtab tabstop=4 shiftwidth=4 foldmethod=marker: */
-require_once('Text/Parser/Generator/FSA/Transition.php');
+namespace sergiosgc;
 
 /** 
  * Text_Parser_Generator_FSA_Transition_Goto represents a reduce transtion in a Text_Parser_Generator_FSA state graph

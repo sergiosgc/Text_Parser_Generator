@@ -1,0 +1,43 @@
+{
+    "name": "sergiosgc/Text_Parser_Generator",
+    "description": "Text_Parser_Generator is a compiler-compiler. It analyzes a grammar, defined as a Structures_Grammar instance, and produces code for a parser, based on Text_Parser, capable of parsing the provided grammar. The Structures_Grammar instance can be created with PHP code, or by using a grammar definition grammar and a suitable parser (check Text_Parser_BNF for a BNF parser).",
+    "keywords": ["parser"],
+    "type": "library",
+    "license": "GPLv3",
+    "homepage": "https://github.com/sergiosgc/Text_Parser_Generator",
+    "repositories": [
+        {
+            "url": "https://github.com/sergiosgc/Text_Parser.git",
+            "type": "git"
+        },
+        {
+            "url": "https://github.com/sergiosgc/Text_Tokenizer.git",
+            "type": "git"
+        },
+        {
+            "url": "https://github.com/sergiosgc/Structures_Grammar.git",
+            "type": "git"
+        }
+    ],
+    "authors":
+    [
+        {
+            "name": "Sérgio Carvalho",
+            "homepage": "https://github.com/sergiosgc"
+        }
+    ],
+    "require":
+    {
+        "php": ">=7.0.0",
+        "sergiosgc/Text_Parser": "dev-master",
+        "sergiosgc/Text_Tokenizer": "dev-master",
+        "sergiosgc/Structures_Grammar": "dev-master"
+    },
+    "autoload":
+    {
+        "psr-0":
+        {
+            "sergiosgc\\": "lib/"
+        }
+    }
+}

@@ -1,5 +1,7 @@
 <?php
-require_once('Text/Parser/Generator/Exception.php');
+/* vim: set expandtab tabstop=4 shiftwidth=4 foldmethod=marker: */
+namespace sergiosgc;
+
 class Text_Parser_Generator_Exception_Conflict extends Text_Parser_Generator_Exception
 {
     public function __construct($parser, $message = '', $parentException = null)

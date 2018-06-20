@@ -2,12 +2,9 @@
 Create a few Text_Parser_Generator_Item instances
 --FILE--
 <?php
-ini_set('include_path', realpath(dirname(__FILE__) . '/../../Structures_Grammar') . ':' .
-                        realpath(dirname(__FILE__) . '/../') . ':' .
-                        ini_get('include_path'));
-require_once('Structures/Grammar/Symbol.php');
-require_once('Structures/Grammar/Rule.php');
-require_once('Text/Parser/Generator/Item.php');
+namespace sergiosgc;
+require_once(__DIR__ . '/../vendor/autoload.php');
+
 $rule = new Structures_Grammar_Rule();
 $symbol = Structures_Grammar_Symbol::create('A');
 $symbol->setTerminal(false);

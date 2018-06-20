@@ -1,6 +1,7 @@
 <?php
 /* vim: set expandtab tabstop=4 shiftwidth=4 foldmethod=marker: */
-require_once('Text/Parser/Generator/Item.php');
+namespace sergiosgc;
+
 /**
  * A Text_Parser_Generator_ItemSet is a set of Text_Parser_Generator_Item instances
  */

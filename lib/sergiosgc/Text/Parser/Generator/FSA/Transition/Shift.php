@@ -1,6 +1,6 @@
 <?php
 /* vim: set expandtab tabstop=4 shiftwidth=4 foldmethod=marker: */
-require_once('Text/Parser/Generator/FSA/Transition.php');
+namespace sergiosgc;
 
 /** 
  * Text_Parser_Generator_FSA_Transition_Shift represents a reduce transtion in a Text_Parser_Generator_FSA state graph
@@ -25,7 +25,6 @@ class Text_Parser_Generator_FSA_Transition_Shift extends Text_Parser_Generator_F
     /* computeLookahead {{{ */
     public function computeLookahead($grammar)
     {
-        require_once('Structures/Grammar/Symbol/Set.php');
         $result = new Structures_Grammar_Symbol_Set();
         foreach ($this->getOriginItem()->followSet($grammar) as $symbol) {
             $result->addSymbol($symbol);

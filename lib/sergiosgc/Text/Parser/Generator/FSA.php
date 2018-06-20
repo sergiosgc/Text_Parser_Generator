@@ -1,6 +1,6 @@
 <?php
 /* vim: set expandtab tabstop=4 shiftwidth=4 foldmethod=marker: */
-require_once('Text/Parser/Generator/Exception.php');
+namespace sergiosgc;
 
 /**
  * Text_Parser_Generator_FSA represents the finite state automaton for a parser
@@ -91,7 +91,6 @@ class Text_Parser_Generator_FSA
      */
     public function addState($state)
     {
-        require_once('Text/Parser/Generator/FSA/State.php');
         if ($state instanceof Text_Parser_Generator_ItemSet) $state = new Text_Parser_Generator_FSA_State($state);
         $state->setFSA($this);
         if ($this->stateExists($state)) return;
@@ -151,7 +150,7 @@ class Text_Parser_Generator_FSA
         foreach ($symbolset as $symbol) {
             $symbol = (string) $symbol;
             if (count($lookahead) == 0) {
-                $row[$symbol] =& $action;
+                $row[$symbol] = &$action;
             } else {
                 if (!array_key_exists($symbol, $row)) $row[$symbol] = array(
                     'action' => 'lookahead',
@@ -165,7 +164,6 @@ class Text_Parser_Generator_FSA
     /* addActionToTable {{{ */
     protected static function addActionToTable(&$table, $lookahead, $state, $symbol, $action)
     {
-        require_once('Structures/Grammar/Symbol/Set.php');
 
         if (!array_key_exists($state, $table)) $table[$state] = array();
         self::addActionToTableRow($table[$state], $lookahead, array($symbol), $action);
@@ -183,7 +181,7 @@ class Text_Parser_Generator_FSA
     public function gotoTable()
     {
         $table = array();
-        foreach ($this->getTransitionsByClass('Text_Parser_Generator_FSA_Transition_Goto') as $transition) {
+        foreach ($this->getTransitionsByClass('\sergiosgc\Text_Parser_Generator_FSA_Transition_Goto') as $transition) {
             self::addActionToTable($table, 
                                    array(),
                                    $transition->getOriginState()->getIndex(), 
@@ -217,7 +215,7 @@ class Text_Parser_Generator_FSA
     public function actionTable($grammar)
     {
         $table = array();
-        foreach ($this->getTransitionsByClass('Text_Parser_Generator_FSA_Transition_Accept') as $transition) {
+        foreach ($this->getTransitionsByClass('\sergiosgc\Text_Parser_Generator_FSA_Transition_Accept') as $transition) {
             self::addActionToTable($table, 
                                    $transition->getLookahead(),
                                    $transition->getOriginState()->getIndex(), 
@@ -225,7 +223,7 @@ class Text_Parser_Generator_FSA
                                    array(
                                     'action' => 'accept'));
         }
-        foreach ($this->getTransitionsByClass('Text_Parser_Generator_FSA_Transition_Shift') as $transition) {
+        foreach ($this->getTransitionsByClass('\sergiosgc\Text_Parser_Generator_FSA_Transition_Shift') as $transition) {
             self::addActionToTable($table, 
                                    $transition->getLookahead(),
                                    $transition->getOriginState()->getIndex(), 
@@ -234,7 +232,7 @@ class Text_Parser_Generator_FSA
                                     'action' => 'shift',
                                     'nextState' => $transition->getTargetState()->getIndex()));
         }
-        foreach ($this->getTransitionsByClass('Text_Parser_Generator_FSA_Transition_Reduce') as $transition) {
+        foreach ($this->getTransitionsByClass('\sergiosgc\Text_Parser_Generator_FSA_Transition_Reduce') as $transition) {
             self::addActionToTable($table, 
                                    $transition->getLookahead(),
                                    $transition->getOriginState()->getIndex(), 
@@ -259,7 +257,7 @@ class Text_Parser_Generator_FSA
     {
         $done = array();
         $result = '';
-        foreach ($this->getTransitionsByClass('Text_Parser_Generator_FSA_Transition_Reduce') as $transition) {
+        foreach ($this->getTransitionsByClass('\sergiosgc\Text_Parser_Generator_FSA_Transition_Reduce') as $transition) {
             if (array_key_exists($grammar->getRuleIndex($transition->getOriginItem()->getRule()), $done)) continue;
             $done[$grammar->getRuleIndex($transition->getOriginItem()->getRule())] = true;
             $code = $transition->getOriginItem()->getRule()->getReductionFunction();
@@ -287,9 +285,8 @@ EOS
  */
 protected function &%s(%s)
 {
-    require_once('Text/Tokenizer/Token.php');
     %s
-    \$result =& new Text_Tokenizer_Token('%s', \$result);
+    \$result = new \sergiosgc\Text_Tokenizer_Token('%s', \$result);
     return \$result;
 }
 /* }}} */

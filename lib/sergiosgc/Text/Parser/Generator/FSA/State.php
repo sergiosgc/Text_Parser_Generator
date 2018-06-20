@@ -1,6 +1,6 @@
 <?php
 /* vim: set expandtab tabstop=4 shiftwidth=4 foldmethod=marker: */
-require_once('Text/Parser/Generator/Exception.php');
+namespace sergiosgc;
 
 /**
  * Text_Parser_Generator_FSA_State a state in the finite state automaton for a parser

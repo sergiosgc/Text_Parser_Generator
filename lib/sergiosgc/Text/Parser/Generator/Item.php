@@ -1,7 +1,7 @@
 <?php
 /* vim: set expandtab tabstop=4 shiftwidth=4 foldmethod=marker: */
-require_once('Structures/Grammar/Rule.php');
-require_once('Text/Parser/Generator/Exception.php');
+namespace sergiosgc;
+
 /**
  * A Text_Parser_Generator_Item is a Structures_Grammar rule extended with
  * the parser state (i.e. how much of the rule was consumed and how much is left).
@@ -121,8 +121,6 @@ class Text_Parser_Generator_Item
      */
     public function followSet($grammar)
     {
-        require_once('Structures/Grammar/Symbol/Set.php');
-        require_once('Structures/Grammar/Symbol.php');
         if (is_null($this->itemSet)) throw new Text_Parser_Generator_Exception('followSet requires that the item be part of an item set');
         if ($this->index == 0 && !$this->itemSet->isItemInKernel($this)) {
             foreach ($this->itemSet->getItems() as $item) if ($item->getSymbol() == $this->getRule()->getLeftSymbol(0)) return $item->followSet($grammar);
@@ -156,8 +154,6 @@ class Text_Parser_Generator_Item
      */
     public function firstSet($grammar)
     {
-        require_once('Structures/Grammar/Symbol/Set.php');
-        require_once('Structures/Grammar/Symbol.php');
         if (!is_null($this->firstSet)) return $this->firstSet;
         $this->firstSet = new Structures_Grammar_Symbol_Set();
 
