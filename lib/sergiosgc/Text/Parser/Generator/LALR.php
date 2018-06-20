@@ -54,8 +54,8 @@ class Text_Parser_Generator_LALR extends Text_Parser_Generator_LR
         // Find shift-reduce conflicts and attempt resolution by computing lookaheads for participating
         // transactions
         foreach ($this->fsa->getStates() as $idx => $state) {
-            $reduces = $state->getTransitionsByClass('Text_Parser_Generator_FSA_Transition_Reduce');
-            $shifts = $state->getTransitionsByClass('Text_Parser_Generator_FSA_Transition_Shift');
+            $reduces = $state->getTransitionsByClass('\sergiosgc\Text_Parser_Generator_FSA_Transition_Reduce');
+            $shifts = $state->getTransitionsByClass('\sergiosgc\Text_Parser_Generator_FSA_Transition_Shift');
             foreach ($reduces as $reduce) foreach ($shifts as $shift) {
                 if ($reduce->conflictsWith($shift)) {
                     $shift->computeLookahead($this->grammar);
@@ -66,8 +66,8 @@ class Text_Parser_Generator_LALR extends Text_Parser_Generator_LR
         // Find any remaining conflicts on transactions with different priorities. Solve by removing enough of the
         // lower priority transaction to remove the conflict
         foreach ($this->fsa->getStates() as $idx => $state) {
-            $transitions = array_merge($state->getTransitionsByClass('Text_Parser_Generator_FSA_Transition_Reduce'), 
-                                       $state->getTransitionsByClass('Text_Parser_Generator_FSA_Transition_Shift'));
+            $transitions = array_merge($state->getTransitionsByClass('\sergiosgc\Text_Parser_Generator_FSA_Transition_Reduce'), 
+                                       $state->getTransitionsByClass('\sergiosgc\Text_Parser_Generator_FSA_Transition_Shift'));
             $toRemove = array();
             for ($i=0; $i < count($transitions); $i++) for ($j = $i+1; $j < count($transitions); $j++) if
                 ($transitions[$i]->conflictsWith($transitions[$j]) &&
