@@ -46,6 +46,8 @@ class Text_Parser_Generator_FSA_Transition_Shift extends Text_Parser_Generator_F
             $this->getAdvanceSymbol()->getId(), 
             $this->getTargetState()->getFSA()->getStateIndex($this->getTargetState()),
             (string) $this->getOriginItem());
+
+        $result .= "Lookahead = ";
         foreach ($this->getLookahead() as $la) $result .= (string) $la;
         $result .= "\n";
         return $result;

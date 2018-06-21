@@ -33,6 +33,7 @@ class Text_Parser_Generator_FSA_Transition_Reduce extends Text_Parser_Generator_
     public function __toString()
     {
         $result =  sprintf('Reduce on %s using %s ', $this->getAdvanceSymbol()->getId(), (string) $this->getOriginItem()->getRule());
+        $result .= "Lookahead = ";
         foreach ($this->getLookahead() as $la) $result .= (string) $la;
         $result .= "\n";
         return $result;
