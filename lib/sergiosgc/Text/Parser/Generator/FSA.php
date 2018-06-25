@@ -299,7 +299,7 @@ EOS
             , (string) $transition->getOriginItem()->getRule()->getLeftSymbol(0)->getId()
             , sprintf('reduce_rule_%d', $grammar->getRuleIndex($transition->getOriginItem()->getRule()))
             , $signature
-            , $code
+            , preg_replace('_^_m', '    ', $code)
             , $transition->getOriginItem()->getRule()->getLeftSymbol(0)->getId());
         }
         return $result;
