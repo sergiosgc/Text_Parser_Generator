@@ -265,7 +265,7 @@ class Text_Parser_Generator_FSA
             $signature = '';
             $argPHPDoc = " *\n";
             foreach($args as $idx => $arg) if ($arg != '') {
-                $signature .= (strlen($signature) == 0 ? '' : ',') . '&' . $arg;
+                $signature .= (strlen($signature) == 0 ? '' : ',') . $arg . ' = null';
                 $argPHPDoc .= sprintf(<<<EOS
  * @param Text_Tokenizer_Token Token of type '%s'
 
@@ -283,11 +283,10 @@ EOS
 %s
  * @return Text_Tokenizer_Token Result token from reduction. It must be a '%s' token
  */
-protected function &%s(%s)
+protected function %s(%s)
 {
     %s
-    \$result = new \sergiosgc\Text_Tokenizer_Token('%s', \$result);
-    return \$result;
+    return new \sergiosgc\Text_Tokenizer_Token('%s', \$result);
 }
 /* }}} */
 
